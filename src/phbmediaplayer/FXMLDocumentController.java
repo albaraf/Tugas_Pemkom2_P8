@@ -82,17 +82,18 @@ public class FXMLDocumentController implements Initializable {
         mediaView.setMediaPlayer(mediaPlayer);
         mediaView.autosize();
 
-        // Atur ukuran MediaView mengikuti scene
         DoubleProperty width = mediaView.fitWidthProperty();
         DoubleProperty height = mediaView.fitHeightProperty();
+
         width.bind(Bindings.selectDouble(mediaView.sceneProperty(), "width"));
         height.bind(Bindings.selectDouble(mediaView.sceneProperty(), "height"));
         mediaView.setPreserveRatio(true);
 
-        // Set volume awal sesuai slider
-        mediaPlayer.setVolume(volume.getValue() / 100.0);
+        volume.setValue(50);
+        volume.valueProperty().addListener((Observable observable) -> {
+            mediaPlayer.setVolume(volume.getValue() / 100);
+        });
 
-        // Sinkronkan posisi slider seek dengan posisi media
         mediaPlayer.currentTimeProperty().addListener((ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) -> {
             seek.setValue(newValue.toSeconds());
         });
@@ -176,17 +177,10 @@ public class FXMLDocumentController implements Initializable {
             mediaPlayer.setRate(0.5);
         }
     }
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Pasang listener volume saat aplikasi dijalankan
-        volume.valueProperty().addListener((Observable observable) -> {
-            if (mediaPlayer != null) {
-                mediaPlayer.setVolume(volume.getValue() / 100.0);
-            }
-        });
-
-        // Set default nilai slider volume (opsional)
-        volume.setValue(50);
+        // Optional: initial setup code
     }
 }
