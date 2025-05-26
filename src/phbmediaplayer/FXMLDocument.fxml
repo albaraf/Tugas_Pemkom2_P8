@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.media.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="bPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phbmediaplayer.FXMLDocumentController">
+   <bottom>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="214.0" prefWidth="600.0">
+               <children>
+                  <MenuButton mnemonicParsing="false" text="open">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#openFiles" text="open File" />
+                      <MenuItem mnemonicParsing="false" text="open folder" />
+                        <MenuItem mnemonicParsing="false" text="open playlist" />
+                    </items>
+                     <HBox.margin>
+                        <Insets top="140.0" />
+                     </HBox.margin>
+                  </MenuButton>
+                  <Button mnemonicParsing="false" onAction="#seekBackward" text="&lt;&lt;">
+                     <HBox.margin>
+                        <Insets top="140.0" />
+                     </HBox.margin></Button>
+                  <Button mnemonicParsing="false" onAction="#backward" text="&lt;">
+                     <HBox.margin>
+                        <Insets top="140.0" />
+                     </HBox.margin></Button>
+                  <Button mnemonicParsing="false" onAction="#pausePlay" text="play">
+                     <HBox.margin>
+                        <Insets top="140.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#stop" text="stop">
+                     <HBox.margin>
+                        <Insets top="140.0" />
+                     </HBox.margin></Button>
+                  <Button mnemonicParsing="false" onAction="#seekForward" text="&gt;&gt;">
+                     <HBox.margin>
+                        <Insets top="140.0" />
+                     </HBox.margin></Button>
+                  <Button mnemonicParsing="false" onAction="#forward" text="&gt;">
+                     <HBox.margin>
+                        <Insets top="140.0" />
+                     </HBox.margin></Button>
+               </children>
+            </HBox>
+            <Slider fx:id="volume" />
+         </children>
+      </VBox>
+   </bottom>
+   <center>
+      <StackPane fx:id="sPane" prefHeight="422.0" prefWidth="761.0" BorderPane.alignment="CENTER">
+         <children>
+            <MediaView fx:id="mediaView" fitHeight="200.0" fitWidth="200.0" />
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>
